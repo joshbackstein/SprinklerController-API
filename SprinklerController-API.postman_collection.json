@@ -2,178 +2,217 @@
 	"variables": [],
 	"info": {
 		"name": "SprinklerController-API",
-		"_postman_id": "8f6c7441-f1de-c289-002b-9fee03f90b00",
+		"_postman_id": "6681bc9b-75f3-3943-25ce-68a5e7c17aed",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Ready",
-			"request": {
-				"url": "localhost:4000/",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
+			"name": "GET",
+			"description": "",
+			"item": [
+				{
+					"name": "Ready",
+					"request": {
+						"url": "localhost:4000/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Config Show",
+					"request": {
+						"url": "localhost:4000/config",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Programs Index",
+					"request": {
+						"url": "localhost:4000/programs",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Program Show",
+					"request": {
+						"url": "localhost:4000/programs/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Program Show - Invalid Program",
+					"request": {
+						"url": "localhost:4000/programs/a",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Program Show - Program Not Found",
+					"request": {
+						"url": "localhost:4000/programs/123456789",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Steps Index",
+					"request": {
+						"url": "localhost:4000/programs/1/steps",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Steps Index - Invalid Program",
+					"request": {
+						"url": "localhost:4000/programs/a/steps",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Steps Index - Program Not Found",
+					"request": {
+						"url": "localhost:4000/programs/123456789/steps",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Show",
+					"request": {
+						"url": "localhost:4000/programs/1/steps/0",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Show - Invalid Program",
+					"request": {
+						"url": "localhost:4000/programs/a/steps/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Show - Program Not Found",
+					"request": {
+						"url": "localhost:4000/programs/123456789/steps/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Show - Invalid Step",
+					"request": {
+						"url": "localhost:4000/programs/1/steps/a",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Show - Out of Bounds Step",
+					"request": {
+						"url": "localhost:4000/programs/1/steps/123456789",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Config Show",
-			"request": {
-				"url": "localhost:4000/config",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Programs Index",
-			"request": {
-				"url": "localhost:4000/programs",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Program Show",
-			"request": {
-				"url": "localhost:4000/programs/1",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Program Show - Invalid Program",
-			"request": {
-				"url": "localhost:4000/programs/a",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Program Show - Program Not Found",
-			"request": {
-				"url": "localhost:4000/programs/9999",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Steps Index",
-			"request": {
-				"url": "localhost:4000/programs/1/steps",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Steps Index - Invalid Program",
-			"request": {
-				"url": "localhost:4000/programs/a/steps",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Step Show",
-			"request": {
-				"url": "localhost:4000/programs/1/steps/0",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Step Show - Invalid Program",
-			"request": {
-				"url": "localhost:4000/programs/a/steps/1",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Step Show - Invalid Step",
-			"request": {
-				"url": "localhost:4000/programs/1/steps/a",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Step Show - Out of Bounds Step",
-			"request": {
-				"url": "localhost:4000/programs/1/steps/123456789",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
+			"name": "POST",
+			"description": "",
+			"item": []
 		}
 	]
 }
