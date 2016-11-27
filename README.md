@@ -42,7 +42,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * Replace single step
 * Determine whether a request is JSON or raw.
   * *Instead of using a leading byte in the request, we might be better off using a header or URL prefix to determine which one should be used*
-* Split source into multiple files
+* ~~Split source into multiple files~~
 
 ## Usage
 
