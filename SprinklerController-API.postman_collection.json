@@ -14,7 +14,7 @@
 				{
 					"name": "Ready",
 					"request": {
-						"url": "localhost:4000/",
+						"url": "{{server}}/",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -28,7 +28,7 @@
 				{
 					"name": "Config Show",
 					"request": {
-						"url": "localhost:4000/config",
+						"url": "{{server}}/config",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -42,7 +42,7 @@
 				{
 					"name": "Programs List",
 					"request": {
-						"url": "localhost:4000/programs",
+						"url": "{{server}}/programs",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -56,7 +56,7 @@
 				{
 					"name": "Program Show",
 					"request": {
-						"url": "localhost:4000/programs/1",
+						"url": "{{server}}/programs/1",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -70,7 +70,7 @@
 				{
 					"name": "Program Show - Invalid Program",
 					"request": {
-						"url": "localhost:4000/programs/a",
+						"url": "{{server}}/programs/a",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -84,7 +84,7 @@
 				{
 					"name": "Program Show - Program Not Found",
 					"request": {
-						"url": "localhost:4000/programs/123456789",
+						"url": "{{server}}/programs/123456789",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -98,7 +98,7 @@
 				{
 					"name": "Steps List",
 					"request": {
-						"url": "localhost:4000/programs/1/steps",
+						"url": "{{server}}/programs/1/steps",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -112,7 +112,7 @@
 				{
 					"name": "Steps List - Invalid Program",
 					"request": {
-						"url": "localhost:4000/programs/a/steps",
+						"url": "{{server}}/programs/a/steps",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -126,7 +126,7 @@
 				{
 					"name": "Steps List - Program Not Found",
 					"request": {
-						"url": "localhost:4000/programs/123456789/steps",
+						"url": "{{server}}/programs/123456789/steps",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -140,7 +140,7 @@
 				{
 					"name": "Step Show",
 					"request": {
-						"url": "localhost:4000/programs/1/steps/0",
+						"url": "{{server}}/programs/1/steps/0",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -154,7 +154,7 @@
 				{
 					"name": "Step Show - Invalid Program",
 					"request": {
-						"url": "localhost:4000/programs/a/steps/1",
+						"url": "{{server}}/programs/a/steps/1",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -168,7 +168,7 @@
 				{
 					"name": "Step Show - Program Not Found",
 					"request": {
-						"url": "localhost:4000/programs/123456789/steps/1",
+						"url": "{{server}}/programs/123456789/steps/1",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -182,7 +182,7 @@
 				{
 					"name": "Step Show - Invalid Step",
 					"request": {
-						"url": "localhost:4000/programs/1/steps/a",
+						"url": "{{server}}/programs/1/steps/a",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -196,7 +196,7 @@
 				{
 					"name": "Step Show - Out of Bounds Step",
 					"request": {
-						"url": "localhost:4000/programs/1/steps/123456789",
+						"url": "{{server}}/programs/1/steps/123456789",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -216,7 +216,7 @@
 				{
 					"name": "Config Update",
 					"request": {
-						"url": "localhost:4000/config",
+						"url": "{{server}}/config",
 						"method": "POST",
 						"header": [
 							{
@@ -236,7 +236,7 @@
 				{
 					"name": "Programs List Update",
 					"request": {
-						"url": "localhost:4000/programs",
+						"url": "{{server}}/programs",
 						"method": "POST",
 						"header": [
 							{
@@ -256,7 +256,7 @@
 				{
 					"name": "Program Update",
 					"request": {
-						"url": "localhost:4000/programs/1",
+						"url": "{{server}}/programs/1",
 						"method": "POST",
 						"header": [
 							{
@@ -276,7 +276,7 @@
 				{
 					"name": "Program Update - Invalid Program",
 					"request": {
-						"url": "localhost:4000/programs/a",
+						"url": "{{server}}/programs/a",
 						"method": "POST",
 						"header": [
 							{
@@ -296,7 +296,7 @@
 				{
 					"name": "Program Update - Program Not Found",
 					"request": {
-						"url": "localhost:4000/programs/123456789",
+						"url": "{{server}}/programs/123456789",
 						"method": "POST",
 						"header": [
 							{
@@ -316,7 +316,7 @@
 				{
 					"name": "Steps List Update",
 					"request": {
-						"url": "localhost:4000/programs/1/steps",
+						"url": "{{server}}/programs/1/steps",
 						"method": "POST",
 						"header": [
 							{
@@ -336,7 +336,7 @@
 				{
 					"name": "Steps List Update - Invalid Program",
 					"request": {
-						"url": "localhost:4000/programs/a/steps",
+						"url": "{{server}}/programs/a/steps",
 						"method": "POST",
 						"header": [
 							{
@@ -356,7 +356,7 @@
 				{
 					"name": "Steps List Update - Program Not Found",
 					"request": {
-						"url": "localhost:4000/programs/123456789/steps",
+						"url": "{{server}}/programs/123456789/steps",
 						"method": "POST",
 						"header": [
 							{
@@ -376,7 +376,7 @@
 				{
 					"name": "Step Update",
 					"request": {
-						"url": "localhost:4000/programs/1/steps/0",
+						"url": "{{server}}/programs/1/steps/0",
 						"method": "POST",
 						"header": [
 							{
@@ -396,7 +396,7 @@
 				{
 					"name": "Step Update - Invalid Program",
 					"request": {
-						"url": "localhost:4000/programs/a/steps/1",
+						"url": "{{server}}/programs/a/steps/1",
 						"method": "POST",
 						"header": [
 							{
@@ -416,7 +416,7 @@
 				{
 					"name": "Step Update - Program Not Found",
 					"request": {
-						"url": "localhost:4000/programs/123456789/steps/1",
+						"url": "{{server}}/programs/123456789/steps/1",
 						"method": "POST",
 						"header": [
 							{
@@ -436,7 +436,7 @@
 				{
 					"name": "Step Update - Invalid Step",
 					"request": {
-						"url": "localhost:4000/programs/1/steps/a",
+						"url": "{{server}}/programs/1/steps/a",
 						"method": "POST",
 						"header": [
 							{
@@ -456,7 +456,7 @@
 				{
 					"name": "Step Update - Out of Bounds Step",
 					"request": {
-						"url": "localhost:4000/programs/1/steps/123456789",
+						"url": "{{server}}/programs/1/steps/123456789",
 						"method": "POST",
 						"header": [
 							{
