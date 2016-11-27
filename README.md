@@ -14,7 +14,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
 ### List:
 
 * ~~Read configuration from JSON file~~
-* Write configuration to JSON file
+* ~~Write configuration to JSON file~~
 * JSON
   * **GET requests**
     * **Ready**
@@ -29,10 +29,11 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * ~~Array of steps in program~~
     * ~~Single step in program~~
   * **POST requests**
-    * Replace array of programs
-    * Replace single program
-    * Replace array of steps in program
-    * Replace single step
+    * ~~Replace configuation~~
+    * ~~Replace array of programs~~
+    * ~~Replace single program~~
+    * ~~Replace array of steps in program~~
+    * ~~Replace single step~~
     * Manual override
       * Force zone on for duration
       * Force zone on until turned off
@@ -51,6 +52,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * Array of steps in program
     * Single step in program
   * POST requests
+    * Replace configuation
     * Replace array of programs
     * Replace single program
     * Replace array of steps in program
@@ -93,13 +95,13 @@ Requests will be done using the GET and POST methods on a given path. The curren
 
 `http://api.example.com/programs/{programId}`
 
-* Returns the program with the provided program ID.
+* Returns the program containing the provided program ID.
 
 **Example:**
 
 URL: `http://api.example.com/programs/1`
 
-Response:
+Response body:
 
 ```
 {
@@ -139,19 +141,19 @@ Response:
 
 `http://api.example.com/programs/{programId}/steps`
 
-* Returns an array of steps in the program with the provided program ID.
+* Returns an array of steps in the program containing the provided program ID.
 
 ---
 
 `http://api.example.com/programs/{programId}/steps/{stepIndex}`
 
-* Returns the step located at the provided index from the program with the provided program ID.
+* Returns the step located at the provided index from the program containing the provided program ID.
 
 **Example:**
 
 URL: `http://api.example.com/programs/1/steps/0`
 
-Response:
+Response body:
 
 ```
 {
@@ -175,6 +177,582 @@ Response:
 
 #### POST
 
-`http://api.example.com/`
+`http://api.example.com/config`
 
-* Not implemented
+* Replaces the entire configuration.
+
+**Example:**
+
+URL: `http://api.example.com/config`
+
+Request body:
+
+```
+{
+  "deploymentCounter": 0,
+  "url": "localhost",
+  "port": 4000,
+  "programCount": 1,
+  "programs": [
+    {
+      "id": 1,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "stepCount": 1,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 300
+        }
+      ]
+    }
+  ]
+}
+```
+
+Response body:
+
+```
+{
+  "deploymentCounter": 1,
+  "url": "localhost",
+  "port": 4000,
+  "programCount": 1,
+  "programs": [
+    {
+      "id": 1,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "stepCount": 1,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 300
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+`http://api.example.com/programs`
+
+* Replaces the currently stored programs.
+
+**Example:**
+
+URL: `http://api.example.com/programs`
+
+Request body:
+
+```
+[
+  {
+    "id": 1,
+    "enabled": true,
+    "daysOfWeek": [
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "stepCount": 2,
+    "steps": [
+      {
+        "zones": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "startTime": 420,
+        "duration": 60
+      },
+      {
+        "zones": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false
+        ],
+        "startTime": 420,
+        "duration": 30
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "enabled": true,
+    "daysOfWeek": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      false
+    ],
+    "stepCount": 1,
+    "steps": [
+      {
+        "zones": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "startTime": 420,
+        "duration": 300
+      }
+    ]
+  }
+]
+```
+
+Response body:
+
+```
+{
+  "deploymentCounter": 5,
+  "url": "localhost",
+  "port": 4000,
+  "programCount": 2,
+  "programs": [
+    {
+      "id": 1,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "stepCount": 2,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 60
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "stepCount": 1,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "startTime": 420,
+          "duration": 300
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+`http://api.example.com/programs/{programId}`
+
+* Replaces the program containing the provided program ID.
+
+**Example:**
+
+URL: `http://api.example.com/programs/1`
+
+Request body:
+
+```
+{
+  "id": 1,
+  "enabled": true,
+  "daysOfWeek": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true
+  ],
+  "stepCount": 1,
+  "steps": [
+    {
+      "zones": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "startTime": 420,
+      "duration": 60
+    }
+  ]
+}
+```
+
+Response body:
+
+```
+{
+  "deploymentCounter": 5,
+  "url": "localhost",
+  "port": 4000,
+  "programCount": 1,
+  "programs": [
+    {
+      "id": 1,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "stepCount": 1,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 60
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+`http://api.example.com/programs/{programId}/steps`
+
+* Replaces the steps in the program containing the provided program ID.
+
+**Example:**
+
+URL: `http://api.example.com/programs/1/steps`
+
+Request body:
+
+```
+[
+  {
+    "zones": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "startTime": 420,
+    "duration": 600
+  }
+]
+```
+
+Response body:
+
+```
+{
+  "deploymentCounter": 5,
+  "url": "localhost",
+  "port": 4000,
+  "programCount": 1,
+  "programs": [
+    {
+      "id": 1,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "stepCount": 1,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "startTime": 420,
+          "duration": 600
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+`http://api.example.com/programs/{programId}/steps/{stepIndex}`
+
+* Replaces the step located at the provided index from the program containing the provided program ID.
+
+**Example:**
+
+URL: `http://api.example.com/programs/1/steps/0`
+
+Request body:
+
+```
+{
+  "zones": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
+  "startTime": 420,
+  "duration": 300
+}
+```
+
+Response body:
+
+```
+{
+  "deploymentCounter": 5,
+  "url": "localhost",
+  "port": 4000,
+  "programCount": 1,
+  "programs": [
+    {
+      "id": 1,
+      "enabled": true,
+      "daysOfWeek": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "stepCount": 5,
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 300
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 30
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "startTime": 420,
+          "duration": 15
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 480,
+          "duration": 60
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "startTime": 1200,
+          "duration": 120
+        }
+      ]
+    }
+  ]
+}
+```
