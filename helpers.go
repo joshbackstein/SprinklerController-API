@@ -1,8 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
+	"io"
+	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -66,5 +71,56 @@ func getStepIndex(indexString string, programIndex int) (int, int, error) {
 		// It was an invalid ID.
 		return -1, http.StatusBadRequest,
 			errors.New("Invalid step index: " + indexString)
+	}
+}
+
+// Check to see if JSON body is valid.
+func parseBody(r *http.Request, dest interface{}) (int, error) {
+	// Read the body of the request.
+	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+
+	// Were we able to read the request?
+	if err == nil {
+		// We were able to read it, so let's see if the data was valid.
+		err = json.Unmarshal(body, &dest)
+
+		// Was the data valid?
+		if err == nil {
+			// Data was valid.
+			return http.StatusOK, nil
+		} else {
+			// Data was invalid, so let the user know.
+			return http.StatusBadRequest, errors.New("Malformed request body.")
+		}
+	} else {
+		// There was an error. Send our error as the response.
+		return http.StatusBadRequest,
+			errors.New("Could not read request. Size of request might be too large.")
+	}
+}
+
+// Update deployment counter and configuration file.
+func updateDeployment() {
+	// First, we need to increment the deployment counter.
+	config.DeploymentCounter++
+
+	// After we've incremented the deployment counter, we need to save the
+	// actual deployment to the file.
+	configFile, err := os.Create(configFilePath)
+
+	// Defer closing the file until we're done with the function.
+	defer configFile.Close()
+
+	// Were we able to open the file?
+	if err == nil {
+		// We were able to open the file, so let's write to it.
+		json.NewEncoder(configFile).Encode(config)
+	} else {
+		// There was an error.
+		log.Printf(
+			"ERROR: Could not save deployment to file: \"%s\"\n\tFile error: %v\n",
+			configFilePath,
+			err,
+		)
 	}
 }

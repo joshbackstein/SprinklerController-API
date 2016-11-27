@@ -51,4 +51,34 @@ var routes = Routes{
 		"/programs/{programId}/steps/{stepIndex}",
 		StepShow,
 	},
+	Route{
+		"ConfigUpdate",
+		"POST",
+		"/config",
+		ConfigUpdate,
+	},
+	Route{
+		"ProgramsListUpdate",
+		"POST",
+		"/programs",
+		ProgramsListUpdate,
+	},
+	Route{
+		"ProgramUpdate",
+		"POST",
+		"/programs/{programId}",
+		ProgramUpdate,
+	},
+	Route{
+		"StepsListUpdate",
+		"POST",
+		"/programs/{programId}/steps",
+		StepsListUpdate,
+	},
+	Route{
+		"StepUpdate",
+		"POST",
+		"/programs/{programId}/steps/{stepIndex}",
+		StepUpdate,
+	},
 }

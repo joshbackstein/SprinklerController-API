@@ -11,11 +11,13 @@ import (
 
 // Global config variable.
 var config Config
+var configFilePath string = "./config.json"
 
 // Main function.
 func main() {
 	// Load JSON file.
-	file, err := ioutil.ReadFile("./config.json")
+	//file, err := ioutil.ReadFile("./config.json")
+	file, err := ioutil.ReadFile(configFilePath)
 	if err != nil {
 		fmt.Printf("File error: %v\n", err)
 		os.Exit(1)
