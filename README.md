@@ -627,7 +627,7 @@ Response body:
 
 `http://api.example.com/programs/{programId}/steps/{stepIndex}`
 
-* Replaces the step located at the provided index from the program containing the provided program ID.
+* Replaces the step located at the provided index in the program containing the provided program ID.
 
 **Example:**
 
