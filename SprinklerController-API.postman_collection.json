@@ -212,7 +212,268 @@
 		{
 			"name": "POST",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Config Update",
+					"request": {
+						"url": "localhost:4000/config",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"deploymentCounter\": 0,\n  \"url\": \"localhost\",\n  \"port\": 4000,\n  \"programCount\": 1,\n  \"programs\": [\n    {\n      \"id\": 1,\n      \"enabled\": true,\n      \"daysOfWeek\": [\n        false,\n        true,\n        true,\n        true,\n        true,\n        true,\n        false\n      ],\n      \"stepCount\": 5,\n      \"steps\": [\n        {\n          \"zones\": [\n            true,\n            true,\n            true,\n            true,\n            true,\n            false,\n            false,\n            false,\n            false\n          ],\n          \"startTime\": 420,\n          \"duration\": 300\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true,\n            false,\n            false\n          ],\n          \"startTime\": 420,\n          \"duration\": 30\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true\n          ],\n          \"startTime\": 420,\n          \"duration\": 15\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            true,\n            false,\n            false,\n            false,\n            false\n          ],\n          \"startTime\": 480,\n          \"duration\": 60\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true,\n            true,\n            true\n          ],\n          \"startTime\": 1200,\n          \"duration\": 120\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Programs List Update",
+					"request": {
+						"url": "localhost:4000/programs",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": 1,\n    \"enabled\": true,\n    \"daysOfWeek\": [\n      false,\n      true,\n      true,\n      true,\n      true,\n      true,\n      false\n    ],\n    \"stepCount\": 5,\n    \"steps\": [\n      {\n        \"zones\": [\n          true,\n          true,\n          true,\n          true,\n          true,\n          false,\n          false,\n          false,\n          false\n        ],\n        \"startTime\": 420,\n        \"duration\": 60\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true,\n          false,\n          false\n        ],\n        \"startTime\": 420,\n        \"duration\": 30\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true\n        ],\n        \"startTime\": 420,\n        \"duration\": 15\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          true,\n          false,\n          false,\n          false,\n          false\n        ],\n        \"startTime\": 480,\n        \"duration\": 60\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true,\n          true,\n          true\n        ],\n        \"startTime\": 1200,\n        \"duration\": 120\n      }\n    ]\n  },\n  {\n    \"id\": 123,\n    \"enabled\": true,\n    \"daysOfWeek\": [\n      false,\n      false,\n      false,\n      false,\n      false,\n      true,\n      false\n    ],\n    \"stepCount\": 1,\n    \"steps\": [\n      {\n        \"zones\": [\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true\n        ],\n        \"startTime\": 420,\n        \"duration\": 300\n      }\n    ]\n  }\n]"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Program Update",
+					"request": {
+						"url": "localhost:4000/programs/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"enabled\": true,\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"stepCount\": 1,\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Program Update - Invalid Program",
+					"request": {
+						"url": "localhost:4000/programs/a",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"enabled\": true,\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"stepCount\": 1,\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Program Update - Program Not Found",
+					"request": {
+						"url": "localhost:4000/programs/123456789",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"enabled\": true,\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"stepCount\": 1,\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Steps List Update",
+					"request": {
+						"url": "localhost:4000/programs/1/steps",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"zones\": [\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true\n    ],\n    \"startTime\": 420,\n    \"duration\": 600\n  }\n]"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Steps List Update - Invalid Program",
+					"request": {
+						"url": "localhost:4000/programs/a/steps",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"zones\": [\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true\n    ],\n    \"startTime\": 420,\n    \"duration\": 600\n  }\n]"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Steps List Update - Program Not Found",
+					"request": {
+						"url": "localhost:4000/programs/123456789/steps",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"zones\": [\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true,\n      true\n    ],\n    \"startTime\": 420,\n    \"duration\": 600\n  }\n]"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Update",
+					"request": {
+						"url": "localhost:4000/programs/1/steps/0",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"zones\": [\n    true,\n    true,\n    true,\n    true,\n    true,\n    false,\n    false,\n    false,\n    false\n  ],\n  \"startTime\": 420,\n  \"duration\": 300\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Update - Invalid Program",
+					"request": {
+						"url": "localhost:4000/programs/a/steps/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"zones\": [\n    true,\n    true,\n    true,\n    true,\n    true,\n    false,\n    false,\n    false,\n    false\n  ],\n  \"startTime\": 420,\n  \"duration\": 300\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Update - Program Not Found",
+					"request": {
+						"url": "localhost:4000/programs/123456789/steps/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"zones\": [\n    true,\n    true,\n    true,\n    true,\n    true,\n    false,\n    false,\n    false,\n    false\n  ],\n  \"startTime\": 420,\n  \"duration\": 300\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Update - Invalid Step",
+					"request": {
+						"url": "localhost:4000/programs/1/steps/a",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"zones\": [\n    true,\n    true,\n    true,\n    true,\n    true,\n    false,\n    false,\n    false,\n    false\n  ],\n  \"startTime\": 420,\n  \"duration\": 300\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Step Update - Out of Bounds Step",
+					"request": {
+						"url": "localhost:4000/programs/1/steps/123456789",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"zones\": [\n    true,\n    true,\n    true,\n    true,\n    true,\n    false,\n    false,\n    false,\n    false\n  ],\n  \"startTime\": 420,\n  \"duration\": 300\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
