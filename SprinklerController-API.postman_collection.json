@@ -40,7 +40,7 @@
 					"response": []
 				},
 				{
-					"name": "Programs Index",
+					"name": "Programs List",
 					"request": {
 						"url": "localhost:4000/programs",
 						"method": "GET",
@@ -96,7 +96,7 @@
 					"response": []
 				},
 				{
-					"name": "Steps Index",
+					"name": "Steps List",
 					"request": {
 						"url": "localhost:4000/programs/1/steps",
 						"method": "GET",
@@ -110,7 +110,7 @@
 					"response": []
 				},
 				{
-					"name": "Steps Index - Invalid Program",
+					"name": "Steps List - Invalid Program",
 					"request": {
 						"url": "localhost:4000/programs/a/steps",
 						"method": "GET",
@@ -124,7 +124,7 @@
 					"response": []
 				},
 				{
-					"name": "Steps Index - Program Not Found",
+					"name": "Steps List - Program Not Found",
 					"request": {
 						"url": "localhost:4000/programs/123456789/steps",
 						"method": "GET",
