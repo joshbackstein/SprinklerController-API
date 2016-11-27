@@ -14,9 +14,15 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
 ### List:
 
 * ~~Read configuration from JSON file~~
+* Write configuration to JSON file
 * JSON
-  * ~~GET requests~~
-    * ~~Deployment counter~~
+  * **GET requests**
+    * **Ready**
+      * ~~Deployment counter~~
+      * Manual override
+        * Force zone on for duration
+        * Force zone on until turned off
+        * Reset configuration
     * ~~Configuration~~
     * ~~Array of programs~~
     * ~~Single program~~
@@ -27,9 +33,18 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * Replace single program
     * Replace array of steps in program
     * Replace single step
+    * Manual override
+      * Force zone on for duration
+      * Force zone on until turned off
+      * Reset configuration
 * Raw
   * GET requests
-    * Deployment counter
+    * Ready
+      * Deployment counter
+      * Manual override
+        * Force zone on for duration
+        * Force zone on until turned off
+        * Reset configuration
     * Configuration
     * Array of programs
     * Single program
@@ -40,6 +55,10 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * Replace single program
     * Replace array of steps in program
     * Replace single step
+    * Manual override
+      * Force zone on for duration
+      * Force zone on until turned off
+      * Reset configuration
 * Determine whether a request is JSON or raw.
   * *Instead of using a leading byte in the request, we might be better off using a header or URL prefix to determine which one should be used*
 * ~~Split source into multiple files~~
