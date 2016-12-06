@@ -11,46 +11,44 @@ import (
 	"strconv"
 )
 
-// Check to see if program with ID exists.
-func getProgramIndexByIdString(idString string) (int, int, error) {
+// Check to see if program index is valid.
+func getProgramIndex(indexString string) (int, int, error) {
 	// Try to convert it from a string to an integer.
-	programId, err := strconv.Atoi(idString)
+	programIndex, err := strconv.Atoi(indexString)
 
-	// Was it a valid ID?
+	// Was it a valid index?
 	if err == nil {
-		// Loop through programs until we find the one we're searching for.
-		var programIndex int = -1
-		for i := 0; i < len(config.Programs); i++ {
-			if config.Programs[i].Id == programId {
-				programIndex = i
-			}
-		}
-
-		// If the program index is not -1, then we were able to find the program.
-		if programIndex != -1 {
-			// ID was found.
+		// Make sure the program index is valid.
+		var numPrograms = len(config.Programs)
+		if programIndex >= 0 && programIndex < numPrograms {
+			// Program index is valid.
 			return programIndex, http.StatusOK, nil
 		} else {
-			// ID could not be found.
-			return -1, http.StatusNotFound,
-				errors.New("Could not find program with ID: " + idString)
+			// Program index is out of bounds.
+			var errMsg = "Program index is out of bounds: " + indexString
+			return programIndex, http.StatusNotFound,
+				errors.New(errMsg)
 		}
 	} else {
-		// It was an invalid ID.
+		// It was an invalid program index.
 		return -1, http.StatusBadRequest,
-			errors.New("Invalid program ID: " + idString)
+			errors.New("Invalid program index: " + indexString)
 	}
 }
 
 // Check to see if step index is valid.
-func getStepIndex(indexString string, programIndex int) (int, int, error) {
-	// Try to convert it from a string to an integer.
-	stepIndex, err := strconv.Atoi(indexString)
+func getStepIndex(programIndexString string,
+	stepIndexString string) (int, int, error) {
+	// Get the program index.
+	programIndex, statusCode, programErr := getProgramIndex(programIndexString)
 
-	// Was it a valid ID?
-	if err == nil {
-		// Make sure the program index is valid.
-		if programIndex >= 0 {
+	// Was it a valid program index?
+	if programErr == nil {
+		// Try to convert the step index from a string to an integer.
+		stepIndex, stepErr := strconv.Atoi(stepIndexString)
+
+		// Was it a valid step index?
+		if stepErr == nil {
 			// Make sure the step index is within the bounds of our array.
 			var numSteps = len(config.Programs[programIndex].Steps)
 			if stepIndex >= 0 && stepIndex < numSteps {
@@ -58,19 +56,18 @@ func getStepIndex(indexString string, programIndex int) (int, int, error) {
 				return stepIndex, http.StatusOK, nil
 			} else {
 				// Step index is out of bounds.
-				var errMsg = "Step index is out of bounds: " + indexString
+				var errMsg = "Step index is out of bounds: " + stepIndexString
 				return stepIndex, http.StatusNotFound,
 					errors.New(errMsg)
 			}
 		} else {
-			// It was an invalid program index.
+			// It was an invalid step index.
 			return -1, http.StatusBadRequest,
-				errors.New("Invalid program index: " + strconv.Itoa(programIndex))
+				errors.New("Invalid step index: " + stepIndexString)
 		}
 	} else {
-		// It was an invalid ID.
-		return -1, http.StatusBadRequest,
-			errors.New("Invalid step index: " + indexString)
+		// It was an invalid program index.
+		return programIndex, statusCode, programErr
 	}
 }
 

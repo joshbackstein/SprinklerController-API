@@ -16,19 +16,16 @@ var configFilePath string = "./config.json"
 // Main function.
 func main() {
 	// Load JSON file.
-	//file, err := ioutil.ReadFile("./config.json")
 	file, err := ioutil.ReadFile(configFilePath)
 	if err != nil {
 		fmt.Printf("File error: %v\n", err)
 		os.Exit(1)
 	}
 	fmt.Println("Configuration file opened.")
-	//fmt.Printf("%s\n", string(file))
 
 	// Load JSON file contents into config variable.
 	json.Unmarshal(file, &config)
 	fmt.Println("Configuration loaded.")
-	//fmt.Printf("Results: %v\n", config)
 
 	// Blank line to make output look nicer.
 	fmt.Println("")

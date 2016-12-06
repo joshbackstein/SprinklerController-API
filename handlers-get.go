@@ -36,8 +36,8 @@ func ConfigShow(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(config)
 }
 
-// ProgramsIndex handler.
-func ProgramsIndex(w http.ResponseWriter, r *http.Request) {
+// ProgramsListShow handler.
+func ProgramsListShow(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
@@ -53,10 +53,10 @@ func ProgramShow(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program ID and the index in the array where that ID is located.
+	// Get the program index.
 	vars := mux.Vars(r)
-	programIdString := vars["programId"]
-	programIndex, statusCode, err := getProgramIndexByIdString(programIdString)
+	programIndexString := vars["programIndex"]
+	programIndex, statusCode, err := getProgramIndex(programIndexString)
 
 	// Set status.
 	w.WriteHeader(statusCode)
@@ -74,15 +74,15 @@ func ProgramShow(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// StepsIndex handler.
-func StepsIndex(w http.ResponseWriter, r *http.Request) {
+// StepsListShow handler.
+func StepsListShow(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program ID and the index in the array where that ID is located.
+	// Get the program index.
 	vars := mux.Vars(r)
-	programIdString := vars["programId"]
-	programIndex, statusCode, err := getProgramIndexByIdString(programIdString)
+	programIndexString := vars["programIndex"]
+	programIndex, statusCode, err := getProgramIndex(programIndexString)
 
 	// Set status.
 	w.WriteHeader(statusCode)
@@ -105,19 +105,19 @@ func StepShow(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program ID, the step ID, and the index in the array where those
-	// IDs are located.
+	// Get the program and step indices.
 	vars := mux.Vars(r)
-	programIdString := vars["programId"]
+	programIndexString := vars["programIndex"]
 	stepIndexString := vars["stepIndex"]
 	programIndex, statusCode, programErr :=
-		getProgramIndexByIdString(programIdString)
+		getProgramIndex(programIndexString)
 
 	// Were we able to find the program in our program array?
 	if programErr == nil {
 		// The program was found in the array, but we still need to make sure the
 		// step we're trying to access is valid.
-		stepIndex, statusCode, stepErr := getStepIndex(stepIndexString, programIndex)
+		stepIndex, statusCode, stepErr :=
+			getStepIndex(programIndexString, stepIndexString)
 
 		// Set status.
 		w.WriteHeader(statusCode)

@@ -48,9 +48,8 @@ func ProgramsListUpdate(w http.ResponseWriter, r *http.Request) {
 
 	// Was there an error?
 	if err == nil {
-		// It was parsed correctly, so update program count, increment the
-		// deployment counter, and save the new configuration file.
-		config.ProgramCount = len(config.Programs)
+		// It was parsed correctly, so increment the deployment counter and save
+		// the new configuration file.
 		updateDeployment()
 
 		// Respond with JSON of new config.
@@ -69,12 +68,10 @@ func ProgramUpdate(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program ID, the step ID, and the index in the array where those
-	// IDs are located.
+	// Get the program and step indices.
 	vars := mux.Vars(r)
-	programIdString := vars["programId"]
-	programIndex, statusCode, err :=
-		getProgramIndexByIdString(programIdString)
+	programIndexString := vars["programIndex"]
+	programIndex, statusCode, err := getProgramIndex(programIndexString)
 
 	// Were we able to find the program in our program array?
 	if err == nil {
@@ -114,12 +111,10 @@ func StepsListUpdate(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program ID, the step ID, and the index in the array where those
-	// IDs are located.
+	// Get the program and step indices.
 	vars := mux.Vars(r)
-	programIdString := vars["programId"]
-	programIndex, statusCode, err :=
-		getProgramIndexByIdString(programIdString)
+	programIndexString := vars["programIndex"]
+	programIndex, statusCode, err := getProgramIndex(programIndexString)
 
 	// Were we able to find the program in our program array?
 	if err == nil {
@@ -131,10 +126,8 @@ func StepsListUpdate(w http.ResponseWriter, r *http.Request) {
 
 		// Was there an error?
 		if err == nil {
-			// It was parsed correctly, so update step count, increment the
-			// deployment counter, and save the new configuration file.
-			config.Programs[programIndex].StepCount =
-				len(config.Programs[programIndex].Steps)
+			// It was parsed correctly, so increment the deployment counter and save
+			// the new configuration file.
 			updateDeployment()
 
 			// Respond with JSON of new config.
@@ -161,20 +154,18 @@ func StepUpdate(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program ID, the step ID, and the index in the array where those
-	// IDs are located.
+	// Get the program and step indices.
 	vars := mux.Vars(r)
-	programIdString := vars["programId"]
+	programIndexString := vars["programIndex"]
 	stepIndexString := vars["stepIndex"]
-	programIndex, statusCode, programErr :=
-		getProgramIndexByIdString(programIdString)
+	programIndex, statusCode, programErr := getProgramIndex(programIndexString)
 
 	// Were we able to find the program in our program array?
 	if programErr == nil {
 		// The program was found in the array, but we still need to make sure the
 		// step we're trying to access is valid.
 		stepIndex, statusCode, stepErr :=
-			getStepIndex(stepIndexString, programIndex)
+			getStepIndex(programIndexString, stepIndexString)
 
 		// Were we able to find the step in this program?
 		if stepErr == nil {

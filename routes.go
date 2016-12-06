@@ -28,27 +28,27 @@ var routes = Routes{
 		ConfigShow,
 	},
 	Route{
-		"ProgramsIndex",
+		"ProgramsListShow",
 		"GET",
 		"/programs",
-		ProgramsIndex,
+		ProgramsListShow,
 	},
 	Route{
 		"ProgramShow",
 		"GET",
-		"/programs/{programId}",
+		"/programs/{programIndex}",
 		ProgramShow,
 	},
 	Route{
-		"StepsIndex",
+		"StepsListShow",
 		"GET",
-		"/programs/{programId}/steps",
-		StepsIndex,
+		"/programs/{programIndex}/steps",
+		StepsListShow,
 	},
 	Route{
 		"StepShow",
 		"GET",
-		"/programs/{programId}/steps/{stepIndex}",
+		"/programs/{programIndex}/steps/{stepIndex}",
 		StepShow,
 	},
 	Route{
@@ -66,19 +66,19 @@ var routes = Routes{
 	Route{
 		"ProgramUpdate",
 		"POST",
-		"/programs/{programId}",
+		"/programs/{programIndex}",
 		ProgramUpdate,
 	},
 	Route{
 		"StepsListUpdate",
 		"POST",
-		"/programs/{programId}/steps",
+		"/programs/{programIndex}/steps",
 		StepsListUpdate,
 	},
 	Route{
 		"StepUpdate",
 		"POST",
-		"/programs/{programId}/steps/{stepIndex}",
+		"/programs/{programIndex}/steps/{stepIndex}",
 		StepUpdate,
 	},
 }

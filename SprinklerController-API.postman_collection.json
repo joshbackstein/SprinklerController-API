@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SprinklerController-API",
-		"_postman_id": "6681bc9b-75f3-3943-25ce-68a5e7c17aed",
+		"_postman_id": "3f561982-2968-25f7-0366-3b5799d8c10f",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -56,7 +56,7 @@
 				{
 					"name": "Program Show",
 					"request": {
-						"url": "{{server}}/programs/1",
+						"url": "{{server}}/programs/0",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -98,7 +98,7 @@
 				{
 					"name": "Steps List",
 					"request": {
-						"url": "{{server}}/programs/1/steps",
+						"url": "{{server}}/programs/0/steps",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -140,7 +140,7 @@
 				{
 					"name": "Step Show",
 					"request": {
-						"url": "{{server}}/programs/1/steps/0",
+						"url": "{{server}}/programs/0/steps/0",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -154,7 +154,7 @@
 				{
 					"name": "Step Show - Invalid Program",
 					"request": {
-						"url": "{{server}}/programs/a/steps/1",
+						"url": "{{server}}/programs/a/steps/0",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -168,7 +168,7 @@
 				{
 					"name": "Step Show - Program Not Found",
 					"request": {
-						"url": "{{server}}/programs/123456789/steps/1",
+						"url": "{{server}}/programs/123456789/steps/0",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -182,7 +182,7 @@
 				{
 					"name": "Step Show - Invalid Step",
 					"request": {
-						"url": "{{server}}/programs/1/steps/a",
+						"url": "{{server}}/programs/0/steps/a",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -196,7 +196,7 @@
 				{
 					"name": "Step Show - Out of Bounds Step",
 					"request": {
-						"url": "{{server}}/programs/1/steps/123456789",
+						"url": "{{server}}/programs/0/steps/123456789",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -256,7 +256,7 @@
 				{
 					"name": "Program Update",
 					"request": {
-						"url": "{{server}}/programs/1",
+						"url": "{{server}}/programs/0",
 						"method": "POST",
 						"header": [
 							{
@@ -316,7 +316,7 @@
 				{
 					"name": "Steps List Update",
 					"request": {
-						"url": "{{server}}/programs/1/steps",
+						"url": "{{server}}/programs/0/steps",
 						"method": "POST",
 						"header": [
 							{
@@ -376,7 +376,7 @@
 				{
 					"name": "Step Update",
 					"request": {
-						"url": "{{server}}/programs/1/steps/0",
+						"url": "{{server}}/programs/0/steps/0",
 						"method": "POST",
 						"header": [
 							{
@@ -396,7 +396,7 @@
 				{
 					"name": "Step Update - Invalid Program",
 					"request": {
-						"url": "{{server}}/programs/a/steps/1",
+						"url": "{{server}}/programs/a/steps/0",
 						"method": "POST",
 						"header": [
 							{
@@ -416,7 +416,7 @@
 				{
 					"name": "Step Update - Program Not Found",
 					"request": {
-						"url": "{{server}}/programs/123456789/steps/1",
+						"url": "{{server}}/programs/123456789/steps/0",
 						"method": "POST",
 						"header": [
 							{
@@ -436,7 +436,7 @@
 				{
 					"name": "Step Update - Invalid Step",
 					"request": {
-						"url": "{{server}}/programs/1/steps/a",
+						"url": "{{server}}/programs/0/steps/a",
 						"method": "POST",
 						"header": [
 							{
@@ -456,7 +456,7 @@
 				{
 					"name": "Step Update - Out of Bounds Step",
 					"request": {
-						"url": "{{server}}/programs/1/steps/123456789",
+						"url": "{{server}}/programs/0/steps/123456789",
 						"method": "POST",
 						"header": [
 							{
