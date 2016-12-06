@@ -7,17 +7,15 @@ type Step struct {
 	Duration  int    `json:"duration"`
 }
 type Program struct {
-	Id         int    `json:"id"`
 	Enabled    bool   `json:"enabled"`
+	Name       string `json:"name"`
 	DaysOfWeek []bool `json:"daysOfWeek"`
-	StepCount  int    `json:"stepCount"`
 	Steps      []Step `json:"steps"`
 }
 type Config struct {
 	DeploymentCounter int       `json:"deploymentCounter"`
 	Url               string    `json:"url"`
 	Port              int       `json:"port"`
-	ProgramCount      int       `json:"programCount"`
 	Programs          []Program `json:"programs"`
 }
 

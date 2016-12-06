@@ -1,12 +1,11 @@
 {
-  "deploymentCounter":4,
+  "deploymentCounter":1,
   "url":"localhost",
   "port":4000,
-  "programCount":1,
   "programs":[
     {
-      "id":1,
       "enabled":true,
+      "name":"Program #1",
       "daysOfWeek":[
         false,
         true,
@@ -16,7 +15,6 @@
         true,
         false
       ],
-      "stepCount":5,
       "steps":[
         {
           "zones":[
