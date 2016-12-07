@@ -1,7 +1,9 @@
 {
   "deploymentCounter":1,
-  "url":"localhost",
-  "port":4000,
+  "localHost":"localhost",
+  "localPort":4000,
+  "host":"api.example.com",
+  "port":80,
   "programs":[
     {
       "enabled":true,

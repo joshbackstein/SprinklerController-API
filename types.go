@@ -14,7 +14,9 @@ type Program struct {
 }
 type Config struct {
 	DeploymentCounter int       `json:"deploymentCounter"`
-	Url               string    `json:"url"`
+	LocalHost         string    `json:"localHost"`
+	LocalPort         int       `json:"localPort"`
+	Host              string    `json:"host"`
 	Port              int       `json:"port"`
 	Programs          []Program `json:"programs"`
 }

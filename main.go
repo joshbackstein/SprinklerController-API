@@ -37,7 +37,7 @@ func main() {
 // Run the HTTP server.
 func runServer() {
 	// Figure out which port we want to listen on.
-	var port string = strconv.Itoa(config.Port)
+	var port string = strconv.Itoa(config.LocalPort)
 	if port == "0" {
 		// Port was invalid or not provided, so use port 4000
 		// by default
@@ -50,6 +50,6 @@ func runServer() {
 	router := NewRouter()
 
 	// Start HTTP server.
-	fmt.Println("Listening on " + config.Url + ":" + port)
-	http.ListenAndServe(config.Url+":"+port, router)
+	fmt.Println("Listening on " + config.LocalHost + ":" + port)
+	http.ListenAndServe(config.LocalHost+":"+port, router)
 }
