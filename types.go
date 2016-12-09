@@ -1,6 +1,9 @@
 package main
 
 // Types for config.
+type Master struct {
+	Enabled bool `json:"enabled"`
+}
 type Step struct {
 	Zones     []bool `json:"zones"`
 	StartTime int    `json:"startTime"`
@@ -23,6 +26,7 @@ type Config struct {
 	LocalPort         int        `json:"localPort"`
 	Host              string     `json:"host"`
 	Port              int        `json:"port"`
+	Master            Master     `json:"master"`
 	Programs          []Program  `json:"programs"`
 	Overrides         []Override `json:"overrides"`
 }

@@ -64,6 +64,12 @@ var routes = Routes{
 		OverrideShow,
 	},
 	Route{
+		"MasterShow",
+		"GET",
+		"/master",
+		MasterShow,
+	},
+	Route{
 		"ConfigUpdate",
 		"POST",
 		"/config",
@@ -104,5 +110,11 @@ var routes = Routes{
 		"POST",
 		"/overrides/{overrideIndex}",
 		OverrideUpdate,
+	},
+	Route{
+		"MasterUpdate",
+		"POST",
+		"/master",
+		MasterUpdate,
 	},
 }

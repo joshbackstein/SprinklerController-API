@@ -4,6 +4,9 @@
   "localPort":4000,
   "host":"api.example.com",
   "port":80,
+  "master":{
+    "enabled":true
+  },
   "programs":[
     {
       "enabled":true,

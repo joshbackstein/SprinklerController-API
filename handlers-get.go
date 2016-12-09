@@ -36,6 +36,18 @@ func ConfigShow(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(config)
 }
 
+// MasterShow handler.
+func MasterShow(w http.ResponseWriter, r *http.Request) {
+	// Set return type.
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+	// Set status.
+	w.WriteHeader(http.StatusOK)
+
+	// Send our JSON response.
+	json.NewEncoder(w).Encode(config.Master)
+}
+
 // ProgramsListShow handler.
 func ProgramsListShow(w http.ResponseWriter, r *http.Request) {
 	// Set return type.

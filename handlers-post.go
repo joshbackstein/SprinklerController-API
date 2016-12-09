@@ -35,6 +35,34 @@ func ConfigUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// MasterUpdate handler.
+func MasterUpdate(w http.ResponseWriter, r *http.Request) {
+	// Set return type.
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+	// Read request body.
+	statusCode, err := parseBody(r, &config.Master)
+
+	// Set status code.
+	w.WriteHeader(statusCode)
+
+	// Was there an error?
+	if err == nil {
+		// It was parsed correctly, so increment the deployment counter and save
+		// the new configuration file.
+		updateDeployment()
+
+		// Respond with JSON of new config.
+		json.NewEncoder(w).Encode(config)
+	} else {
+		// It could not be parsed correctly.
+		var e Error = Error{
+			Error: err.Error(),
+		}
+		json.NewEncoder(w).Encode(e)
+	}
+}
+
 // ProgramsListUpdate handler.
 func ProgramsListUpdate(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
