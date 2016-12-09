@@ -82,7 +82,7 @@
 					"response": []
 				},
 				{
-					"name": "Program Show - Program Not Found",
+					"name": "Program Show - Out of Bounds Program",
 					"request": {
 						"url": "{{server}}/programs/123456789",
 						"method": "GET",
@@ -124,7 +124,7 @@
 					"response": []
 				},
 				{
-					"name": "Steps List - Program Not Found",
+					"name": "Steps List - Out of Bounds Program",
 					"request": {
 						"url": "{{server}}/programs/123456789/steps",
 						"method": "GET",
@@ -166,7 +166,7 @@
 					"response": []
 				},
 				{
-					"name": "Step Show - Program Not Found",
+					"name": "Step Show - Out of Bounds Program",
 					"request": {
 						"url": "{{server}}/programs/123456789/steps/0",
 						"method": "GET",
@@ -206,6 +206,62 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Overrides List",
+					"request": {
+						"url": "{{server}}/overrides",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Override Show",
+					"request": {
+						"url": "{{server}}/overrides/0",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Override Show - Invalid Override",
+					"request": {
+						"url": "{{server}}/overrides/a",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Override Show - Out of Bounds Override",
+					"request": {
+						"url": "{{server}}/overrides/123456789",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -227,7 +283,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"deploymentCounter\": 0,\n  \"localHost\": \"localhost\",\n  \"localPort\": 4000,\n  \"host\": \"api.joshbackstein.com\",\n  \"port\": 80,\n  \"programCount\": 1,\n  \"programs\": [\n    {\n      \"id\": 1,\n      \"enabled\": true,\n      \"daysOfWeek\": [\n        false,\n        true,\n        true,\n        true,\n        true,\n        true,\n        false\n      ],\n      \"stepCount\": 5,\n      \"steps\": [\n        {\n          \"zones\": [\n            true,\n            true,\n            true,\n            true,\n            true,\n            false,\n            false,\n            false,\n            false\n          ],\n          \"startTime\": 420,\n          \"duration\": 300\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true,\n            false,\n            false\n          ],\n          \"startTime\": 420,\n          \"duration\": 30\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true\n          ],\n          \"startTime\": 420,\n          \"duration\": 15\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            true,\n            false,\n            false,\n            false,\n            false\n          ],\n          \"startTime\": 480,\n          \"duration\": 60\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true,\n            true,\n            true\n          ],\n          \"startTime\": 1200,\n          \"duration\": 120\n        }\n      ]\n    }\n  ]\n}"
+							"raw": "{\n  \"deploymentCounter\": 0,\n  \"localHost\": \"localhost\",\n  \"localPort\": 4000,\n  \"host\": \"api.joshbackstein.com\",\n  \"port\": 80,\n  \"programs\": [\n    {\n      \"enabled\": true,\n      \"name\": \"Program #1\",\n      \"daysOfWeek\": [\n        false,\n        true,\n        true,\n        true,\n        true,\n        true,\n        false\n      ],\n      \"steps\": [\n        {\n          \"zones\": [\n            true,\n            true,\n            true,\n            true,\n            true,\n            false,\n            false,\n            false,\n            false\n          ],\n          \"startTime\": 420,\n          \"duration\": 300\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true,\n            false,\n            false\n          ],\n          \"startTime\": 420,\n          \"duration\": 30\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true\n          ],\n          \"startTime\": 420,\n          \"duration\": 15\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            true,\n            false,\n            false,\n            false,\n            false\n          ],\n          \"startTime\": 480,\n          \"duration\": 60\n        },\n        {\n          \"zones\": [\n            false,\n            false,\n            false,\n            false,\n            false,\n            true,\n            true,\n            true,\n            true\n          ],\n          \"startTime\": 1200,\n          \"duration\": 120\n        }\n      ]\n    }\n  ],\n  \"overrides\": [\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    },\n    {\n      \"enabled\": false,\n      \"untilTurnedOff\": true,\n      \"duration\": 0\n    }\n  ]\n}"
 						},
 						"description": ""
 					},
@@ -247,7 +303,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"id\": 1,\n    \"enabled\": true,\n    \"daysOfWeek\": [\n      false,\n      true,\n      true,\n      true,\n      true,\n      true,\n      false\n    ],\n    \"stepCount\": 5,\n    \"steps\": [\n      {\n        \"zones\": [\n          true,\n          true,\n          true,\n          true,\n          true,\n          false,\n          false,\n          false,\n          false\n        ],\n        \"startTime\": 420,\n        \"duration\": 60\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true,\n          false,\n          false\n        ],\n        \"startTime\": 420,\n        \"duration\": 30\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true\n        ],\n        \"startTime\": 420,\n        \"duration\": 15\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          true,\n          false,\n          false,\n          false,\n          false\n        ],\n        \"startTime\": 480,\n        \"duration\": 60\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true,\n          true,\n          true\n        ],\n        \"startTime\": 1200,\n        \"duration\": 120\n      }\n    ]\n  },\n  {\n    \"id\": 123,\n    \"enabled\": true,\n    \"daysOfWeek\": [\n      false,\n      false,\n      false,\n      false,\n      false,\n      true,\n      false\n    ],\n    \"stepCount\": 1,\n    \"steps\": [\n      {\n        \"zones\": [\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true\n        ],\n        \"startTime\": 420,\n        \"duration\": 300\n      }\n    ]\n  }\n]"
+							"raw": "[\n  {\n    \"enabled\": true,\n    \"name\": \"Program #1\",\n    \"daysOfWeek\": [\n      false,\n      true,\n      true,\n      true,\n      true,\n      true,\n      false\n    ],\n    \"steps\": [\n      {\n        \"zones\": [\n          true,\n          true,\n          true,\n          true,\n          true,\n          false,\n          false,\n          false,\n          false\n        ],\n        \"startTime\": 420,\n        \"duration\": 60\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true,\n          false,\n          false\n        ],\n        \"startTime\": 420,\n        \"duration\": 30\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true\n        ],\n        \"startTime\": 420,\n        \"duration\": 15\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          true,\n          false,\n          false,\n          false,\n          false\n        ],\n        \"startTime\": 480,\n        \"duration\": 60\n      },\n      {\n        \"zones\": [\n          false,\n          false,\n          false,\n          false,\n          false,\n          true,\n          true,\n          true,\n          true\n        ],\n        \"startTime\": 1200,\n        \"duration\": 120\n      }\n    ]\n  },\n  {\n    \"enabled\": true,\n    \"name\": \"Program #2\",\n    \"daysOfWeek\": [\n      false,\n      false,\n      false,\n      false,\n      false,\n      true,\n      false\n    ],\n    \"steps\": [\n      {\n        \"zones\": [\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true,\n          true\n        ],\n        \"startTime\": 420,\n        \"duration\": 300\n      }\n    ]\n  }\n]"
 						},
 						"description": ""
 					},
@@ -267,7 +323,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": 1,\n  \"enabled\": true,\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"stepCount\": 1,\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
+							"raw": "{\n  \"enabled\": true,\n  \"name\": \"Program #1\",\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
 						},
 						"description": ""
 					},
@@ -287,14 +343,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": 1,\n  \"enabled\": true,\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"stepCount\": 1,\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
+							"raw": "{\n  \"enabled\": true,\n  \"name\": \"Program #1\",\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Program Update - Program Not Found",
+					"name": "Program Update - Out of Bounds Program",
 					"request": {
 						"url": "{{server}}/programs/123456789",
 						"method": "POST",
@@ -307,7 +363,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": 1,\n  \"enabled\": true,\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"stepCount\": 1,\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
+							"raw": "{\n  \"enabled\": true,\n  \"name\": \"Program #1\",\n  \"daysOfWeek\": [\n    false,\n    false,\n    false,\n    false,\n    false,\n    false,\n    true\n  ],\n  \"steps\": [\n    {\n      \"zones\": [\n        true,\n        true,\n        true,\n        true,\n        true,\n        false,\n        false,\n        false,\n        false\n      ],\n      \"startTime\": 420,\n      \"duration\": 60\n    }\n  ]\n}"
 						},
 						"description": ""
 					},
@@ -354,7 +410,7 @@
 					"response": []
 				},
 				{
-					"name": "Steps List Update - Program Not Found",
+					"name": "Steps List Update - Out of Bounds Program",
 					"request": {
 						"url": "{{server}}/programs/123456789/steps",
 						"method": "POST",
@@ -414,7 +470,7 @@
 					"response": []
 				},
 				{
-					"name": "Step Update - Program Not Found",
+					"name": "Step Update - Out of Bounds Program",
 					"request": {
 						"url": "{{server}}/programs/123456789/steps/0",
 						"method": "POST",
@@ -468,6 +524,86 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"zones\": [\n    true,\n    true,\n    true,\n    true,\n    true,\n    false,\n    false,\n    false,\n    false\n  ],\n  \"startTime\": 420,\n  \"duration\": 300\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Overrides List Update",
+					"request": {
+						"url": "{{server}}/overrides",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 3600\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": true,\n    \"duration\": 0\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 60\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 120\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 180\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 240\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 300\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 360\n  },\n  {\n    \"enabled\": true,\n    \"untilTurnedOff\": false,\n    \"duration\": 420\n  }\n]"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Override Update",
+					"request": {
+						"url": "{{server}}/overrides/0",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enabled\": true,\n  \"untilTurnedOff\": false,\n  \"duration\": 60\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Override Update - Invalid Override",
+					"request": {
+						"url": "{{server}}/overrides/a",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enabled\": true,\n  \"untilTurnedOff\": false,\n  \"duration\": 60\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Override Update - Out of Bounds Override",
+					"request": {
+						"url": "{{server}}/overrides/123456789",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enabled\": true,\n  \"untilTurnedOff\": false,\n  \"duration\": 60\n}"
 						},
 						"description": ""
 					},
