@@ -1,0 +1,3 @@
+# Backup configuration file to make running the server a little more
+# convenient for development.
+config.json.bak
