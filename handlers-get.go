@@ -142,3 +142,41 @@ func StepShow(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(e)
 	}
 }
+
+// OverridesListShow handler.
+func OverridesListShow(w http.ResponseWriter, r *http.Request) {
+	// Set return type.
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+	// Set status.
+	w.WriteHeader(http.StatusOK)
+
+	// Send our JSON response.
+	json.NewEncoder(w).Encode(config.Overrides)
+}
+
+// OverrideShow handler.
+func OverrideShow(w http.ResponseWriter, r *http.Request) {
+	// Set return type.
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+	// Get the override index.
+	vars := mux.Vars(r)
+	overrideIndexString := vars["overrideIndex"]
+	overrideIndex, statusCode, err := getOverrideIndex(overrideIndexString)
+
+	// Set status.
+	w.WriteHeader(statusCode)
+
+	// Were we able to find it in our override array?
+	if err == nil {
+		// The override was found in the array.
+		json.NewEncoder(w).Encode(config.Overrides[overrideIndex])
+	} else {
+		// There was an error. Send it as the response.
+		var e Error = Error{
+			Error: err.Error(),
+		}
+		json.NewEncoder(w).Encode(e)
+	}
+}

@@ -95,5 +95,52 @@
         }
       ]
     }
+  ],
+  "overrides":[
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    },
+    {
+      "enabled":false,
+      "untilTurnedOff":true,
+      "duration":0
+    }
   ]
 }

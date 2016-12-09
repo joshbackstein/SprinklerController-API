@@ -68,7 +68,7 @@ func ProgramUpdate(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program and step indices.
+	// Get the program index.
 	vars := mux.Vars(r)
 	programIndexString := vars["programIndex"]
 	programIndex, statusCode, err := getProgramIndex(programIndexString)
@@ -111,7 +111,7 @@ func StepsListUpdate(w http.ResponseWriter, r *http.Request) {
 	// Set return type.
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	// Get the program and step indices.
+	// Get the program index.
 	vars := mux.Vars(r)
 	programIndexString := vars["programIndex"]
 	programIndex, statusCode, err := getProgramIndex(programIndexString)
@@ -205,6 +205,77 @@ func StepUpdate(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(statusCode)
 		var e Error = Error{
 			Error: programErr.Error(),
+		}
+		json.NewEncoder(w).Encode(e)
+	}
+}
+
+// OverridesListUpdate handler.
+func OverridesListUpdate(w http.ResponseWriter, r *http.Request) {
+	// Set return type.
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+	// Read request body.
+	statusCode, err := parseBody(r, &config.Overrides)
+
+	// Set status code.
+	w.WriteHeader(statusCode)
+
+	// Was there an error?
+	if err == nil {
+		// It was parsed correctly, so increment the deployment counter and save
+		// the new configuration file.
+		updateDeployment()
+
+		// Respond with JSON of new config.
+		json.NewEncoder(w).Encode(config)
+	} else {
+		// It could not be parsed correctly.
+		var e Error = Error{
+			Error: err.Error(),
+		}
+		json.NewEncoder(w).Encode(e)
+	}
+}
+
+// OverrideUpdate handler.
+func OverrideUpdate(w http.ResponseWriter, r *http.Request) {
+	// Set return type.
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+
+	// Get the override and step indices.
+	vars := mux.Vars(r)
+	overrideIndexString := vars["overrideIndex"]
+	overrideIndex, statusCode, err := getOverrideIndex(overrideIndexString)
+
+	// Were we able to find the override in our override array?
+	if err == nil {
+		// The override was found in the array, so read the request body.
+		statusCode, err := parseBody(r, &config.Overrides[overrideIndex])
+
+		// Set status code.
+		w.WriteHeader(statusCode)
+
+		// Was there an error?
+		if err == nil {
+			// It was parsed correctly, so increment the deployment counter and
+			// save the new configuration file.
+			updateDeployment()
+
+			// Respond with JSON of new config.
+			json.NewEncoder(w).Encode(config)
+		} else {
+			// It could not be parsed correctly.
+			var e Error = Error{
+				Error: err.Error(),
+			}
+			json.NewEncoder(w).Encode(e)
+		}
+	} else {
+		// There was an error. Send it as the response.
+		w.WriteHeader(statusCode)
+		var e Error = Error{
+			Error: err.Error(),
 		}
 		json.NewEncoder(w).Encode(e)
 	}

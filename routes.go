@@ -52,6 +52,18 @@ var routes = Routes{
 		StepShow,
 	},
 	Route{
+		"OverridesListShow",
+		"GET",
+		"/overrides",
+		OverridesListShow,
+	},
+	Route{
+		"OverrideShow",
+		"GET",
+		"/overrides/{overrideIndex}",
+		OverrideShow,
+	},
+	Route{
 		"ConfigUpdate",
 		"POST",
 		"/config",
@@ -80,5 +92,17 @@ var routes = Routes{
 		"POST",
 		"/programs/{programIndex}/steps/{stepIndex}",
 		StepUpdate,
+	},
+	Route{
+		"OverridesListUpdate",
+		"POST",
+		"/overrides",
+		OverridesListUpdate,
+	},
+	Route{
+		"OverrideUpdate",
+		"POST",
+		"/overrides/{overrideIndex}",
+		OverrideUpdate,
 	},
 }

@@ -12,13 +12,19 @@ type Program struct {
 	DaysOfWeek []bool `json:"daysOfWeek"`
 	Steps      []Step `json:"steps"`
 }
+type Override struct {
+	Enabled        bool `json:"enabled"`
+	UntilTurnedOff bool `json:"untilTurnedOff"`
+	Duration       int  `json:"duration"`
+}
 type Config struct {
-	DeploymentCounter int       `json:"deploymentCounter"`
-	LocalHost         string    `json:"localHost"`
-	LocalPort         int       `json:"localPort"`
-	Host              string    `json:"host"`
-	Port              int       `json:"port"`
-	Programs          []Program `json:"programs"`
+	DeploymentCounter int        `json:"deploymentCounter"`
+	LocalHost         string     `json:"localHost"`
+	LocalPort         int        `json:"localPort"`
+	Host              string     `json:"host"`
+	Port              int        `json:"port"`
+	Programs          []Program  `json:"programs"`
+	Overrides         []Override `json:"overrides"`
 }
 
 // Types for JSON responses.

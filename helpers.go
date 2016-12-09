@@ -71,6 +71,31 @@ func getStepIndex(programIndexString string,
 	}
 }
 
+// Check to see if override index is valid.
+func getOverrideIndex(indexString string) (int, int, error) {
+	// Try to convert it from a string to an integer.
+	overrideIndex, err := strconv.Atoi(indexString)
+
+	// Was it a valid index?
+	if err == nil {
+		// Make sure the override index is valid.
+		var numOverrides = len(config.Overrides)
+		if overrideIndex >= 0 && overrideIndex < numOverrides {
+			// Override index is valid.
+			return overrideIndex, http.StatusOK, nil
+		} else {
+			// Override index is out of bounds.
+			var errMsg = "Override index is out of bounds: " + indexString
+			return overrideIndex, http.StatusNotFound,
+				errors.New(errMsg)
+		}
+	} else {
+		// It was an invalid override index.
+		return -1, http.StatusBadRequest,
+			errors.New("Invalid override index: " + indexString)
+	}
+}
+
 // Check to see if JSON body is valid.
 func parseBody(r *http.Request, dest interface{}) (int, error) {
 	// Read the body of the request.
