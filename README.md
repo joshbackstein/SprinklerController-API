@@ -20,6 +20,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * ~~Ready~~
       * ~~Deployment counter~~
     * ~~Configuration~~
+    * ~~Master control~~
     * ~~Array of programs~~
     * ~~Single program~~
     * ~~Array of steps in program~~
@@ -29,6 +30,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
       * ~~Force zone on for duration~~
   * ~~POST requests~~
     * ~~Replace configuation~~
+    * ~~Replace master control~~
     * ~~Replace array of programs~~
     * ~~Replace single program~~
     * ~~Replace array of steps in program~~
@@ -42,6 +44,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
     * ~~Ready~~
       * ~~Deployment counter~~
     * ~~Configuration~~
+    * ~~Master control~~
     * ~~Array of programs~~
     * ~~Single program~~
     * ~~Array of steps in program~~
@@ -51,6 +54,7 @@ The sprinkler controller API is written in Go. It will sit on the server and tak
       * ~~Force zone on for duration~~
   * ~~POST requests~~
     * ~~Replace configuation~~
+    * ~~Replace master control~~
     * ~~Replace array of programs~~
     * ~~Replace single program~~
     * ~~Replace array of steps in program~~
@@ -81,6 +85,12 @@ Requests will be done using the GET and POST methods on a given path. The curren
 `http://api.example.com/config`
 
 * Returns the entire configuration of the current deployment, including the deployment counter, the local host and port the API is listening on, the external host and port that should be used to access the API, an array of the currently stored programs, and an array of the currently stored manual overrides.
+
+---
+
+`http://api.example.com/master`
+
+* Returns the current master control configuration.
 
 ---
 
@@ -216,6 +226,9 @@ Request body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -307,6 +320,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -335,6 +351,178 @@ Response body:
           ],
           "startTime": 420,
           "duration": 60
+        }
+      ]
+    }
+  ],
+  "overrides": [
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    },
+    {
+      "enabled": false,
+      "untilTurnedOff": true,
+      "duration": 0
+    }
+  ]
+}
+```
+
+---
+
+`http://api.example.com/master`
+
+* Replaces the current master control configuration.
+
+**Example:**
+
+URL: `http://api.example.com/master`
+
+Request body:
+
+```
+{
+  "enabled": false
+}
+```
+
+Response body:
+
+```
+{
+  "deploymentCounter": 2,
+  "localHost": "localhost",
+  "localPort": 4000,
+  "host": "api.example.com",
+  "port": 80,
+  "master": {
+    "enabled": false
+  },
+  "programs": [
+    {
+      "enabled": true,
+      "name": "Program #1",
+      "daysOfWeek": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "steps": [
+        {
+          "zones": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 60
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "startTime": 420,
+          "duration": 30
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "startTime": 420,
+          "duration": 15
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "startTime": 480,
+          "duration": 60
+        },
+        {
+          "zones": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "startTime": 1200,
+          "duration": 120
         }
       ]
     }
@@ -490,6 +678,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -671,6 +862,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -794,6 +988,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -915,6 +1112,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -1129,6 +1329,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
@@ -1300,6 +1503,9 @@ Response body:
   "localPort": 4000,
   "host": "api.example.com",
   "port": 80,
+  "master": {
+    "enabled": true
+  },
   "programs": [
     {
       "enabled": true,
